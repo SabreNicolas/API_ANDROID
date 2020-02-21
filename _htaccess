@@ -1,0 +1,15 @@
+RewriteEngine On # Activer le module Rewrite
+RewriteRule ^users/?$ users.php 
+RewriteRule ^users+/(\d+)$ users.php?id=$1
+RewriteRule ^users+/(\d+)/espaces$ users.php?idUser=$1
+
+
+RewriteRule ^indicateurs/?$ indicateurs.php 
+RewriteRule ^indicateurs+/(\d+)$ indicateurs.php?id=$1
+
+RewriteRule ^espaces/?$ espaces.php 
+RewriteRule ^espaces+/(\d+)$ espaces.php?id=$1
+RewriteRule ^espaces+/(\d+)/indicateurs$ espaces.php?idEspace=$1
+
+RewriteRule ^activites/?$ activites.php 
+RewriteRule ^activites+/(\d+)$ activites.php?id=$1

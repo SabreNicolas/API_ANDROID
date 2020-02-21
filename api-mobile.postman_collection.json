@@ -1,0 +1,422 @@
+{
+	"info": {
+		"_postman_id": "eedcb96b-1134-4bd2-9c15-a7a8e2473639",
+		"name": "api-mobile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "GET USERS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET USER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/users/?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET espaces of user 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/users/1/espaces",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								"1",
+								"espaces"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/users/?id=6",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST USER",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8081/api/users/?nom=SZTUREMSKI&prenom=jean&login=jean&passwd=jean",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "nom",
+									"value": "SZTUREMSKI"
+								},
+								{
+									"key": "prenom",
+									"value": "jean"
+								},
+								{
+									"key": "login",
+									"value": "jean"
+								},
+								{
+									"key": "passwd",
+									"value": "jean"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "espaces",
+			"item": [
+				{
+					"name": "GET ESPACES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/espaces/",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"espaces",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET indicateurs of espace 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/espaces/1/indicateurs",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"espaces",
+								"1",
+								"indicateurs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ESPACE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/espaces/13",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"espaces",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST ESPACE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:8081/api/espaces/?nomEspace=\"Nouvel Espace Max\"&idUser=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"espaces",
+								""
+							],
+							"query": [
+								{
+									"key": "nomEspace",
+									"value": "\"Nouvel Espace Max\""
+								},
+								{
+									"key": "idUser",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put espace",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nomEspace\":\"Maj du nom de l'espace 12\"\n}\t"
+						},
+						"url": {
+							"raw": "localhost:8081/api/espaces/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"espaces",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "indicateurs",
+			"item": [
+				{
+					"name": "GET INDICATEURS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/indicateurs/",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"indicateurs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE indicateur",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/espaces/100",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"espaces",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST indicateurs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8081/api/indicateurs/?idEspace=1&type=number&valeurInit=0&nomIndicateur=Nouvel indicateur",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"indicateurs",
+								""
+							],
+							"query": [
+								{
+									"key": "idEspace",
+									"value": "1"
+								},
+								{
+									"key": "type",
+									"value": "number"
+								},
+								{
+									"key": "valeurInit",
+									"value": "0"
+								},
+								{
+									"key": "nomIndicateur",
+									"value": "Nouvel indicateur"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put indicateurs",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idEspace\":3,\n\t\"type\":\"number\",\n\t\"valeurInit\":\"0\",\n\t\"nomIndicateur\":\"Nombres de clopes fumees\"\n}\t"
+						},
+						"url": {
+							"raw": "localhost:8081/api/indicateurs/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"indicateurs",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
