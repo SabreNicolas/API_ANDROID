@@ -97,13 +97,14 @@ INSERT INTO activite (id,valeur,idEspace,idIndicateur,date) VALUES
 (15,'80',4,7,'2020-02-07'),
 (16,'40',4,8,'2020-02-07');
 
-
+DELIMITER //
 CREATE VIEW myview (idIndicateur,idEspace,idUser,date,valeur,nomIndicateur,type,valeurInit,nomEspace,login)
 AS SELECT i.id,e.id,u.id,date,valeur,nomIndicateur,type,valeurInit,nomEspace,login
 FROM user u,espace e,indicateur i , activite a
 WHERE u.id=e.idUser
 AND e.id=a.idEspace
 AND i.id=a.idIndicateur
+//
 
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` TRIGGER `api-mobile`.`espace_BEFORE_DELETE` BEFORE DELETE ON `espace` FOR EACH ROW
