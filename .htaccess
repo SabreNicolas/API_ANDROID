@@ -4,6 +4,7 @@ RewriteRule ^users/?$ users.php
 RewriteRule ^users+/(\d+)$ users.php?id=$1
 RewriteRule ^users+/(.*)/(.*)$ users.php?login=$1&passwd=$2
 RewriteRule ^users+/(\d+)/espaces$ users.php?idUser=$1
+RewriteRule ^users+/(\d+)/indicateurs$ users.php?idUserIndicateurs=$1
 
 
 RewriteRule ^indicateurs/?$ indicateurs.php 
@@ -16,3 +17,7 @@ RewriteRule ^espaces+/(\d+)/indicateurs$ espaces.php?idEspace=$1
 RewriteRule ^activites/?$ activites.php 
 RewriteRule ^activites+/(\d+)$ activites.php?id=$1
 RewriteRule ^activites+/(\d+)/indicateurs$ activites.php?idEspace=$1
+
+RewriteRule ^views/?$ view.php
+RewriteRule ^views+/(\d+)$ view.php?idEspace=$1
+RewriteRule ^views+/(.*)/(\d+)$ view.php?date=$1&idEspace=$2

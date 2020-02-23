@@ -38,7 +38,8 @@ CREATE TABLE `espace` (
   `type`  VARCHAR(100)  NOT NULL,
   `valeurInit`  VARCHAR(100),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `indicateur_id_uindex` (`id`)
+  UNIQUE KEY `indicateur_id_uindex` (`id`),
+  CONSTRAINT `userIndicateur` FOREIGN KEY (`idUser`) REFERENCES `user`(`id`)
  )
  ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -69,15 +70,15 @@ INSERT INTO espace (id,nomEspace,idUser) VALUES
 (3,'Tabac',2),
 (4,'Ecole',2);
 
-INSERT INTO indicateur (id,nomIndicateur,type,valeurInit) VALUES 
-(1,'Nombre de kilomètres','number','0'),
-(2,'Durée en minutes','number','0'),
-(3,'Nombre de fruits et légumes','number','0'),
-(4,'Grammes de protéines','number','0'),
-(5,'Nombre de cigarettes fumées','number','0'),
-(6,'Paquet acheté','boolean','0'),
-(7,'Temps de révision en minutes','number','0'),
-(8,'Temps d exercices en minutes','number','0');
+INSERT INTO indicateur (id,nomIndicateur,type,valeurInit,idUser) VALUES 
+(1,'Nombre de kilomètres','number','0',1),
+(2,'Durée en minutes','number','0',1),
+(3,'Nombre de fruits et légumes','number','0',1),
+(4,'Grammes de protéines','number','0',1),
+(5,'Nombre de cigarettes fumées','number','0',2),
+(6,'Paquet acheté','boolean','0',2),
+(7,'Temps de révision en minutes','number','0',2),
+(8,'Temps d exercices en minutes','number','0',2);
 
 INSERT INTO activite (id,valeur,idEspace,idIndicateur,date) VALUES 
 (1,'60',1,1,'2020-02-01'),

@@ -33,7 +33,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8888/API_ANDROID/users/?id=1",
+							"raw": "localhost:8888/API_ANDROID/users/1",
 							"host": [
 								"localhost"
 							],
@@ -41,13 +41,7 @@
 							"path": [
 								"API_ANDROID",
 								"users",
-								""
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "1"
-								}
+								"1"
 							]
 						}
 					},
@@ -148,6 +142,204 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Connexion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/API_ANDROID/users/nico/nico",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"users",
+								"nico",
+								"nico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET INDICATEURS OF USER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/API_ANDROID/users/1/indicateurs",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"users",
+								"1",
+								"indicateurs"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "activites",
+			"item": [
+				{
+					"name": "GET ACTIVITES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/API_ANDROID/activites",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"activites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ACTIVITE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/API_ANDROID/activites/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"activites",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD ACTIVITE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/API_ANDROID/activites/?idEspace=1&idIndicateur=1&valeur=123456&date=2020-02-23",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"activites",
+								""
+							],
+							"query": [
+								{
+									"key": "idEspace",
+									"value": "1"
+								},
+								{
+									"key": "idIndicateur",
+									"value": "1"
+								},
+								{
+									"key": "valeur",
+									"value": "123456"
+								},
+								{
+									"key": "date",
+									"value": "2020-02-23"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE ACTIVITE",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idEspace\":3,\n\t\"idIndicateur\":3,\n\t\"valeur\":\"789\",\n\t\"date\":\"2020-02-25\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8888/API_ANDROID/activites/17",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"activites",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ACTIVITE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/API_ANDROID/activites/17",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"activites",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET INDICATEURS OF ESPACE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/API_ANDROID/activites/1/indicateurs",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"activites",
+								"1",
+								"indicateurs"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -170,27 +362,6 @@
 								"API_ANDROID",
 								"espaces",
 								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET indicateurs of espace 1",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8888/API_ANDROID/espaces/1/indicateurs",
-							"host": [
-								"localhost"
-							],
-							"port": "8888",
-							"path": [
-								"API_ANDROID",
-								"espaces",
-								"1",
-								"indicateurs"
 							]
 						}
 					},
@@ -271,10 +442,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nomEspace\":\"Maj du nom de l'espace 12\"\n}\t"
+							"raw": "{\n\t\"nomEspace\":\"Maj du nom de l'espace 4\"\n}\t"
 						},
 						"url": {
-							"raw": "localhost:8888/API_ANDROID/espaces/12",
+							"raw": "localhost:8888/API_ANDROID/espaces/4",
 							"host": [
 								"localhost"
 							],
@@ -282,7 +453,7 @@
 							"path": [
 								"API_ANDROID",
 								"espaces",
-								"12"
+								"4"
 							]
 						}
 					},
@@ -397,7 +568,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"idEspace\":3,\n\t\"type\":\"number\",\n\t\"valeurInit\":\"0\",\n\t\"nomIndicateur\":\"Nombres de clopes fumees\"\n}\t"
+							"raw": "{\n\t\"type\":\"number\",\n\t\"valeurInit\":\"15\",\n\t\"nomIndicateur\":\"Nombres de clopes fumees wesh\"\n}\t"
 						},
 						"url": {
 							"raw": "localhost:8888/API_ANDROID/indicateurs/5",
@@ -409,6 +580,72 @@
 								"API_ANDROID",
 								"indicateurs",
 								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "view",
+			"item": [
+				{
+					"name": "GET VIEWS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/API_ANDROID/views",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"views"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET VIEWS OF ESPACE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/API_ANDROID/views/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"views",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET VIEWS OF ESPACE BY DATE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8888/API_ANDROID/views/2020-02-01/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"API_ANDROID",
+								"views",
+								"2020-02-01",
+								"2"
 							]
 						}
 					},

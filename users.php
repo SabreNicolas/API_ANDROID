@@ -21,7 +21,6 @@
 		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
 	}
 
-    //TODO car actuellement renvoie tous les users
 	function connexion()
     	{
     	    $login = valider("login");
@@ -31,7 +30,7 @@
     		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
     	}
 	
-    //TODO
+    //TODO renvoie vide
 	function getEspacesAssociatedToUser($idUser)
 	{
 		$query = "SELECT * FROM espace";
@@ -42,6 +41,19 @@
 		
 		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
 	}
+
+    //VERSION NICO
+    //TODO renvoie vide
+	function getIndicateursAssociatedToUser($idUserIndicateurs)
+    {
+    	$query = "SELECT * FROM indicateur";
+    	if($idUserIndicateurs != 0)
+    	{
+    		$query .= " WHERE idUser=".$idUserIndicateurs;
+    	}
+
+    	echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
+    }
 
 	function AddUser()
 	{
@@ -88,6 +100,12 @@
 				{
 					$idUser=intval($_GET["idUser"]);
 					getEspacesAssociatedToUser($idUser);
+				}
+				//VERSION NICO
+                else if(!empty($_GET["idUserIndicateurs"]))
+				{
+					$idUserIndicateurs=intval($_GET["idUserIndicateurs"]);
+					getEspacesAssociatedToUser($idUserIndicateurs);
 				}
 				else{
 					getUsers();
