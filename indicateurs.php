@@ -21,8 +21,9 @@
 		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
 		
 	}
-	
-	function AddIndicateur()
+
+	//VERSION MAX
+	/* function AddIndicateur()
 	{
 		$idEspace = valider("idEspace");
 		$type = valider("type");
@@ -37,7 +38,7 @@
 		else
 			echo "erreur";
 	}
-	
+
 	function updateIndicateur($id)
 	{
 		header('Content-Type: application/json');
@@ -56,7 +57,42 @@
 		else{
 		echo "Problèmes de parametres.";
 		}
-	}
+	} */
+
+	//VERSION NICO
+	function AddIndicateur()
+    	{
+    		$type = valider("type");
+    		$valeurInit = valider("valeurInit");
+    		$nomIndicateur = valider("nomIndicateur");
+    		$query="INSERT INTO indicateur(type,valeurInit,nomIndicateur) VALUES('".$type."', '".$valeurInit."', '".$nomIndicateur."')";
+    		if($type  && $valeurInit!= null && $nomIndicateur!= null){
+    		$success = SQLInsert($query);
+    		if($success > 0)
+    			echo "indicateur ajouté";
+    		}
+    		else
+    			echo "erreur";
+    	}
+
+    	function updateIndicateur($id)
+    	{
+    		header('Content-Type: application/json');
+    		$_PUT =file_get_contents('php://input');
+    		$obj = json_decode($_PUT);
+    		$type = proteger($obj->type);
+    		$valeurInit =  proteger($obj->valeurInit);
+    		$nomIndicateur =  proteger($obj->nomIndicateur);
+    		if($id!= null && $type!= null && $type!= null && $valeurInit!= null && $nomIndicateur!= null){
+    		$query="UPDATE indicateur SET type= '".$type."',valeurInit= '".$valeurInit."',nomIndicateur= '".$nomIndicateur."' WHERE id=".$id;
+    		$success = SQLUpdate($query);
+    		if($success > 0)
+    			echo "indicateur mis a jour";
+    		}
+    		else{
+    		echo "Problèmes de parametres.";
+    		}
+    	}
 	
 	function deleteIndicateur($id)
 	{

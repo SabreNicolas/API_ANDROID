@@ -22,7 +22,8 @@
 		
 	}
 
-	function getIndicateursAssociatedToEspace($idEspace)
+    //VERSION MAX
+	/* function getIndicateursAssociatedToEspace($idEspace)
 	{
 
 		$query = "SELECT * FROM indicateur";
@@ -32,7 +33,7 @@
 		}
 		
 		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
-	}
+	} */
 	
 	function AddEspace()
 	{
@@ -80,7 +81,8 @@
 				$id=intval($_GET["id"]);
 				getEspace($id);
 			}
-			else
+			// VERSION MAX
+			/* else
 			{
 				if(!empty($_GET["idEspace"]))
 				{
@@ -90,7 +92,11 @@
 				else{
 					getEspaces();
 				}
-			}
+			} */
+			//VERSION NICO
+			 else
+                getEspaces();
+             }
 			break;
 		default:
 			header("HTTP/1.0 405 Method Not Allowed");

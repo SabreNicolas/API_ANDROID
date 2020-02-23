@@ -2,7 +2,7 @@ RewriteEngine On # Activer le module Rewrite
 
 RewriteRule ^users/?$ users.php 
 RewriteRule ^users+/(\d+)$ users.php?id=$1
-RewriteRule ^users+/(\d+)$ users.php?login=$1&passwd=$2
+RewriteRule ^users+/(.*)/(.*)$ users.php?login=$1&passwd=$2
 RewriteRule ^users+/(\d+)/espaces$ users.php?idUser=$1
 
 
@@ -15,3 +15,4 @@ RewriteRule ^espaces+/(\d+)/indicateurs$ espaces.php?idEspace=$1
 
 RewriteRule ^activites/?$ activites.php 
 RewriteRule ^activites+/(\d+)$ activites.php?id=$1
+RewriteRule ^activites+/(\d+)/indicateurs$ activites.php?idEspace=$1

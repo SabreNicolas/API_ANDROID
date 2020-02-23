@@ -21,18 +21,17 @@
 		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
 	}
 
-	function connexion($login="",$passwd="")
+    //TODO car actuellement renvoie tous les users
+	function connexion()
     	{
-    		$query = "SELECT * FROM user";
-    		if($login != "" && $passwd!= "")
-    		{
-    			$query .= " WHERE login LIKE " .$login. "AND passwd LIKE" .$passwd;
-    		}
+    	    $login = valider("login");
+            $passwd = valider("passwd");
+    		$query = "SELECT * FROM user WHERE login LIKE '".$login."' AND passwd LIKE '".$passwd."' ";
 
     		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
     	}
 	
-
+    //TODO
 	function getEspacesAssociatedToUser($idUser)
 	{
 		$query = "SELECT * FROM espace";

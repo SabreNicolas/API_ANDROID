@@ -21,18 +21,31 @@
 		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
 		
 	}
-	//PAS ENCORE FAIS si dessous
+
+    // VERSION NICO
+	function getIndicateursAssociatedToEspace($idEspace)
+    {
+        $query = "SELECT DISTINCT(idIndicateur) FROM activite";
+    	if($idEspace != 0)
+    	{
+    	    $query .= " WHERE idEspace=".$idEspace;
+    	}
+
+    	echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
+    }
+
+
 	function AddActivite()
 	{
 		$idEspace = valider("idEspace");
-		$type = valider("type");
-		$valeurInit = valider("valeurInit");
-		$nomIndicateur = valider("nomIndicateur");
-		$query="INSERT INTO indicateur(idEspace, type,valeurInit,nomIndicateur) VALUES('".$idEspace."', '".$type."', '".$valeurInit."', '".$nomIndicateur."')";
-		if( $idEspace != null && $type  && $valeurInit!= null && $nomIndicateur!= null){
+		$idIndicateur = valider("idIndicateur");
+		$valeur = valider("valeur");
+		$date = valider("date");
+		$query="INSERT INTO activite(valeur,idEspace,idIndicateur,date) VALUES('".$valeur."', '".$idEspace."', '".$idIndicateur."', '".$date."')";
+		if( $idEspace != null && $valeur!=null  && $date!= null && $idIndicateur!= null){
 		$success = SQLInsert($query);
 		if($success > 0)
-			echo "indicateur ajouté";
+			echo "activite ajoutée";
 		}
 		else
 			echo "erreur";
@@ -44,14 +57,14 @@
 		$_PUT =file_get_contents('php://input');
 		$obj = json_decode($_PUT);
 		$idEspace = proteger($obj->idEspace);
-		$type = proteger($obj->type);
-		$valeurInit =  proteger($obj->valeurInit);
-		$nomIndicateur =  proteger($obj->nomIndicateur);
-		if( $idEspace!= null && $id!= null && $type!= null && $type!= null && $valeurInit!= null && $nomIndicateur!= null){
-		$query="UPDATE indicateur SET idEspace='".$idEspace."',type= '".$type."',valeurInit= '".$valeurInit."',nomIndicateur= '".$nomIndicateur."' WHERE id=".$id;
+		$date = proteger($obj->date);
+		$valeur =  proteger($obj->valeur);
+		$idIndicateur =  proteger($obj->idIndicateur);
+		if( $idEspace!= null && $date!= null && $valeur!= null && $idIndicateur!= null){
+		$query="UPDATE activite SET idEspace='".$idEspace."',date= '".$date."',valeur= '".$valeur."',idIndicateur= '".$idIndicateur."' WHERE id=".$id;
 		$success = SQLUpdate($query);
 		if($success > 0)
-			echo "indicateur mis a jour";
+			echo "activite mis a jour";
 		}
 		else{
 		echo "Problèmes de parametres.";
@@ -60,7 +73,7 @@
 	
 	function deleteActivite($id)
 	{
-		$query = "DELETE FROM indicateur WHERE id=".$id.";";
+		$query = "DELETE FROM activite WHERE id=".$id.";";
 		$success = SQLDelete($query);
 		if($success > 0)
 			echo "indicateur supprime";
@@ -74,10 +87,23 @@
 				$id=intval($_GET["id"]);
 				getActivite($id);
 			}
-			else
+			// VERSION MAX
+			/* else
 			{
 				getActivites();
-			}
+			} */
+			// VERSION NICO
+			else
+            {
+            if(!empty($_GET["idEspace"]))
+            {
+                $idEspace=intval($_GET["idEspace"]);
+            	getIndicateursAssociatedToEspace($idEspace);
+            }
+            else{
+                getActivites();
+            }
+            }
 			break;
 		default:
 			header("HTTP/1.0 405 Method Not Allowed");
