@@ -20,6 +20,17 @@
 		
 		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
 	}
+
+	function connexion($login="",$passwd="")
+    	{
+    		$query = "SELECT * FROM user";
+    		if($login != "" && $passwd!= "")
+    		{
+    			$query .= " WHERE login LIKE " .$login. "AND passwd LIKE" .$passwd;
+    		}
+
+    		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
+    	}
 	
 
 	function getEspacesAssociatedToUser($idUser)
@@ -66,6 +77,12 @@
 				$id=intval($_GET["id"]);
 				getUser($id);
 			}
+			else if(!empty($_GET["login"]) && !empty($_GET["passwd"]))
+            {
+                $login=intval($_GET["login"]);
+                $passwd=intval($_GET["passwd"]);
+                connexion($login,$passwd);
+            }
 			else
 			{
 				if(!empty($_GET["idUser"]))
