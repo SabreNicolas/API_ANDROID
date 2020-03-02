@@ -37,6 +37,7 @@ CREATE TABLE `espace` (
   `nomIndicateur`  VARCHAR(100)  NOT NULL,
   `type`  VARCHAR(100)  NOT NULL,
   `valeurInit`  VARCHAR(100),
+  `idUser` BIGINT(20),
   PRIMARY KEY (`id`),
   UNIQUE KEY `indicateur_id_uindex` (`id`),
   CONSTRAINT `userIndicateur` FOREIGN KEY (`idUser`) REFERENCES `user`(`id`)
