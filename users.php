@@ -18,7 +18,7 @@
 			$query .= " WHERE id=".$id." LIMIT 1";
 		}
 		
-		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
+		return parcoursRs(SQLSelect($query));
 	}
 
 	function connexion()
@@ -65,7 +65,10 @@
 		if($nom != null && $prenom!= null  && $login!= null && $passwd!= null ){
 		$success = SQLInsert($query);
 		if($success > 0)
-			echo "User ajoute";
+			$data["user"] = getUser($success);
+			$data["success"] = true;
+			$data["status"] = 201;
+			echo json_encode($data, JSON_PRETTY_PRINT);
 		}
 	
 	}
