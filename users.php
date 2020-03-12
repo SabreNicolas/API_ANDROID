@@ -29,30 +29,27 @@
 
     		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
     	}
-	
-    //TODO renvoie vide
+
+
 	function getEspacesAssociatedToUser($idUser)
 	{
-		$query = "SELECT * FROM espace";
-		if($idUser != 0)
-		{
-			$query .= " WHERE idUser=".$idUser;
-		}
-		
-		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
+		$query = "SELECT * FROM espace WHERE idUser=".$idUser;
+
+        $data["espaces"] = parcoursRs(SQLSelect($query));
+        $data["success"] = true;
+        $data["status"] = 201;
+        echo json_encode($data, JSON_PRETTY_PRINT);
 	}
 
     //VERSION NICO
-    //TODO renvoie vide
 	function getIndicateursAssociatedToUser($idUserIndicateurs)
     {
-    	$query = "SELECT * FROM indicateur";
-    	if($idUserIndicateurs != 0)
-    	{
-    		$query .= " WHERE idUser=".$idUserIndicateurs;
-    	}
+    	$query = "SELECT * FROM indicateur WHERE idUser=".$idUserIndicateurs;
 
-    	echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
+    	$data["indicateurs"] = parcoursRs(SQLSelect($query));
+        $data["success"] = true;
+        $data["status"] = 201;
+        echo json_encode($data, JSON_PRETTY_PRINT);
     }
 
 	function AddUser()
@@ -86,7 +83,18 @@
 	{
 		
 		case 'GET':
-			if(!empty($_GET["id"]))
+		    if(!empty($_GET["idUser"]))
+            {
+                $idUser=intval($_GET["idUser"]);
+                getEspacesAssociatedToUser($idUser);
+            }
+            //VERSION NICO
+            else if(!empty($_GET["idUserIndicateurs"]))
+            {
+                $idUserIndicateurs=intval($_GET["idUserIndicateurs"]);
+                getIndicateursAssociatedToUser($idUserIndicateurs);
+            }
+			else if(!empty($_GET["id"]))
 			{
 				$id=intval($_GET["id"]);
 				getUser($id);
@@ -99,21 +107,9 @@
             }
 			else
 			{
-				if(!empty($_GET["idUser"]))
-				{
-					$idUser=intval($_GET["idUser"]);
-					getEspacesAssociatedToUser($idUser);
-				}
-				//VERSION NICO
-                else if(!empty($_GET["idUserIndicateurs"]))
-				{
-					$idUserIndicateurs=intval($_GET["idUserIndicateurs"]);
-					getEspacesAssociatedToUser($idUserIndicateurs);
-				}
-				else{
-					getUsers();
-				}
+				getUsers();
 			}
+
 			break;
 		default:
 			// Invalid Request Method

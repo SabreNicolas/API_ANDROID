@@ -3,8 +3,8 @@ RewriteEngine On # Activer le module Rewrite
 RewriteRule ^users/?$ users.php 
 RewriteRule ^users+/(\d+)$ users.php?id=$1
 RewriteRule ^users+/(.*)/(.*)$ users.php?login=$1&passwd=$2
-RewriteRule ^users+/(\d+)/espaces$ users.php?idUser=$1
-RewriteRule ^users+/(\d+)/indicateurs$ users.php?idUserIndicateurs=$1
+RewriteRule ^espacesUser+/(\d+)/espaces users.php?idUser=$1
+RewriteRule ^indicateursUser+/(\d+)/indicateurs$ users.php?idUserIndicateurs=$1
 
 
 RewriteRule ^indicateurs/?$ indicateurs.php 
