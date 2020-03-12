@@ -94,7 +94,7 @@
 				}
 			} */
 			//VERSION NICO
-			 else
+			 else{
                 getEspaces();
              }
 			break;
