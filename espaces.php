@@ -43,8 +43,8 @@
 		if($idUser!= null && $nomEspace!= null){
 		$success = SQLInsert($query);
 		if($success > 0)
-			echo "espace ajouté";
-		}
+        		getEspace($success);
+        }
 	}
 	
 	function updateEspace($id)
