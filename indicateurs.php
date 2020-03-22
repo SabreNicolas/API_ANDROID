@@ -69,10 +69,8 @@
     		if($type  && $valeurInit!= null && $nomIndicateur!= null){
     		$success = SQLInsert($query);
     		if($success > 0)
-    			echo "indicateur ajouté";
-    		}
-    		else
-    			echo "erreur";
+                getIndicateur($success);
+            }
     	}
 
     	function updateIndicateur($id)
