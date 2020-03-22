@@ -74,16 +74,18 @@
             }
     	}
 
+        //TODO : ne fonctionne pas (check si fonctionne pour espace)
     	function updateIndicateur($id)
     	{
     		header('Content-Type: application/json');
     		$_PUT =file_get_contents('php://input');
     		$obj = json_decode($_PUT);
     		$type = proteger($obj->type);
+    		$idUser = proteger($obj->idUser);
     		$valeurInit =  proteger($obj->valeurInit);
     		$nomIndicateur =  proteger($obj->nomIndicateur);
-    		if($id!= null && $type!= null && $type!= null && $valeurInit!= null && $nomIndicateur!= null){
-    		$query="UPDATE indicateur SET type= '".$type."',valeurInit= '".$valeurInit."',nomIndicateur= '".$nomIndicateur."' WHERE id=".$id;
+    		if($id!= null && $type!= null && $idUser!= null && $valeurInit!= null && $nomIndicateur!= null){
+    		$query="UPDATE indicateur SET idUser= '".$idUser."', type= '".$type."',valeurInit= '".$valeurInit."',nomIndicateur= '".$nomIndicateur."' WHERE id=".$id;
     		$success = SQLUpdate($query);
     		if($success > 0)
     			echo "indicateur mis a jour";
