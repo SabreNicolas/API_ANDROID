@@ -62,10 +62,11 @@
 	//VERSION NICO
 	function AddIndicateur()
     	{
+    	    $idUser = valider("idUser");
     		$type = valider("type");
     		$valeurInit = valider("valeurInit");
     		$nomIndicateur = valider("nomIndicateur");
-    		$query="INSERT INTO indicateur(type,valeurInit,nomIndicateur) VALUES('".$type."', '".$valeurInit."', '".$nomIndicateur."')";
+    		$query="INSERT INTO indicateur(type,valeurInit,nomIndicateur,idUser) VALUES('".$type."', '".$valeurInit."', '".$nomIndicateur."', '".$idUser."')";
     		if($type  && $valeurInit!= null && $nomIndicateur!= null){
     		$success = SQLInsert($query);
     		if($success > 0)
