@@ -74,7 +74,7 @@
             }
     	}
 
-        //TODO : ne fonctionne pas (check si fonctionne pour espace)
+
     	function updateIndicateur($id)
     	{
     		header('Content-Type: application/json');
@@ -100,7 +100,9 @@
 		$query = "DELETE FROM indicateur WHERE id=".$id.";";
 		$success = SQLDelete($query);
 		if($success > 0)
-			echo json_encode("indicateur supprime", JSON_PRETTY_PRINT);
+			 $data["success"] = true;
+             $data["status"] = 201;
+             echo json_encode($data, JSON_PRETTY_PRINT);
 	}
 	
 	switch($request_method)
