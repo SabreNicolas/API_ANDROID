@@ -100,7 +100,7 @@
 		$query = "DELETE FROM indicateur WHERE id=".$id.";";
 		$success = SQLDelete($query);
 		if($success > 0)
-			echo "indicateur supprime";
+			echo json_encode("indicateur supprime", JSON_PRETTY_PRINT);
 	}
 	
 	switch($request_method)

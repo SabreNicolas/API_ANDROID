@@ -69,7 +69,7 @@
 		$query = "DELETE FROM espace WHERE id=".$id.";";
 		$success = SQLDelete($query);
 		if($success > 0)
-			echo "espace supprime";
+			echo json_encode("espace supprime", JSON_PRETTY_PRINT);
 	}
 
 	switch($request_method)
