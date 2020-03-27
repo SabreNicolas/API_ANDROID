@@ -57,10 +57,14 @@
 		$query="UPDATE espace SET nomEspace='".$nomEspace."' WHERE id=".$id;
 		$success = SQLUpdate($query);
 		if($success > 0)
-			echo "espace mis a jour";
+			$data["success"] = true;
+            $data["status"] = 201;
+            echo json_encode($data, JSON_PRETTY_PRINT);
 		}
 		else{
-		echo "Problèmes de parametres.";
+		    $data["success"] = false;
+            $data["status"] = 400;
+            echo json_encode($data, JSON_PRETTY_PRINT);
 		}
 	}
 	

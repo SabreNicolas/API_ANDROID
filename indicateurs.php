@@ -88,11 +88,15 @@
     		$query="UPDATE indicateur SET idUser= '".$idUser."', type= '".$type."',valeurInit= '".$valeurInit."',nomIndicateur= '".$nomIndicateur."' WHERE id=".$id;
     		$success = SQLUpdate($query);
     		if($success > 0)
-    			echo "indicateur mis a jour";
+    			$data["success"] = true;
+                $data["status"] = 201;
+                echo json_encode($data, JSON_PRETTY_PRINT);
     		}
     		else{
-    		echo "Problèmes de parametres.";
-    		}
+                $data["success"] = false;
+                $data["status"] = 400;
+                echo json_encode($data, JSON_PRETTY_PRINT);
+            }
     	}
 	
 	function deleteIndicateur($id)
