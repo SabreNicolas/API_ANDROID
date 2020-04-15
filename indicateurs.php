@@ -7,7 +7,10 @@
 	function getIndicateurs()
 	{
 		$query="SELECT * FROM indicateur";
-		echo json_encode(parcoursRs(SQLSelect($query)), JSON_PRETTY_PRINT);
+		$data["indicateurs"] = parcoursRs(SQLSelect($query));
+        $data["success"] = true;
+        $data["status"] = 201;
+        echo json_encode($data, JSON_PRETTY_PRINT);
 	}
 	
 	function getIndicateur($id=0)
