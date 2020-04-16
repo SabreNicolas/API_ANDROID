@@ -17,6 +17,7 @@ RewriteRule ^espaces+/(\d+)/indicateurs$ espaces.php?idEspace=$1
 RewriteRule ^activites/?$ activites.php 
 RewriteRule ^activites+/(\d+)$ activites.php?id=$1
 RewriteRule ^activites+/(\d+)/indicateurs$ activites.php?idEspace=$1
+RewriteRule ^activites+/(\d+)/(.*)/indicateurs$ activites.php?idEspace=$1&date=$2
 
 RewriteRule ^views/?$ view.php
 RewriteRule ^views+/(\d+)$ view.php?idEspace=$1

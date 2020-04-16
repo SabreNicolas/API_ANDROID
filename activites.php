@@ -29,14 +29,30 @@
     {
         $query = "SELECT DISTINCT i.id, i.nomIndicateur, i.type, i.valeurInit, i.idUser
                   FROM indicateur as i
-                  INNER JOIN activite
-                  ON i.id = activite.idIndicateur
-                  WHERE activite.idEspace =".$idEspace;
+                  INNER JOIN activite as a
+                  ON i.id = a.idIndicateur
+                  WHERE a.idEspace =".$idEspace;
 
     	$data["indicateurs"] = parcoursRs(SQLSelect($query));
         $data["success"] = true;
         $data["status"] = 201;
         echo json_encode($data, JSON_PRETTY_PRINT);
+    }
+
+    // VERSION NICO
+    function getIndicateursAssociatedToEspaceAndDate($idEspace,$date)
+    {
+            $date = valider("date");
+            $query = "SELECT DISTINCT i.id, i.nomIndicateur, i.type, i.valeurInit, i.idUser, a.valeur, a.date
+                      FROM indicateur as i
+                      INNER JOIN activite as a
+                      ON i.id = a.idIndicateur
+                      WHERE a.idEspace =".$idEspace." and a.date LIKE '".$date."'";
+
+        	$data["indicateursDate"] = parcoursRs(SQLSelect($query));
+            $data["success"] = true;
+            $data["status"] = 201;
+            echo json_encode($data, JSON_PRETTY_PRINT);
     }
 
 
@@ -105,7 +121,11 @@
             if(!empty($_GET["idEspace"]))
             {
                 $idEspace=intval($_GET["idEspace"]);
-            	getIndicateursAssociatedToEspace($idEspace);
+                if(!empty($_GET["date"])) {
+                    $date=intval($_GET["date"]);
+                    getIndicateursAssociatedToEspaceAndDate($idEspace,$date);
+                }
+            	else getIndicateursAssociatedToEspace($idEspace);
             }
             else{
                 getActivites();
