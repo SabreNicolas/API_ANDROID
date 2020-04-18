@@ -43,7 +43,7 @@
     function getIndicateursAssociatedToEspaceAndDate($idEspace,$date)
     {
             $date = valider("date");
-            $query = "SELECT DISTINCT i.id, i.nomIndicateur, i.type, i.valeurInit, i.idUser, a.valeur, a.date, a.id
+            $query = "SELECT DISTINCT i.id, i.nomIndicateur, i.type, i.valeurInit, i.idUser, a.valeur, a.date, a.id as idActivite
                       FROM indicateur as i
                       INNER JOIN activite as a
                       ON i.id = a.idIndicateur
