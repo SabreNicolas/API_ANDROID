@@ -33,7 +33,7 @@
                   ON i.id = a.idIndicateur
                   WHERE a.idEspace =".$idEspace;
 
-    	$data["indicateurs"] = parcoursRs(SQLSelect($query));
+    	$data["indicateursEspace"] = parcoursRs(SQLSelect($query));
         $data["success"] = true;
         $data["status"] = 201;
         echo json_encode($data, JSON_PRETTY_PRINT);
