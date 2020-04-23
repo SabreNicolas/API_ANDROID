@@ -76,8 +76,31 @@
 		$query = "DELETE FROM user WHERE id=".$id.";";
 		$success = SQLDelete($query);
 		if($success > 0)
-			echo "User supprime";
+            $data["success"] = true;
+            $data["status"] = 201;
+            echo json_encode($data, JSON_PRETTY_PRINT);
 	}
+
+	function changeMDP($id)
+    	{
+    		header('Content-Type: application/json');
+    		$_PUT =file_get_contents('php://input');
+    		$obj = json_decode($_PUT);
+    		$passwd=proteger($obj->passwd);
+    		if( $passwd != null && $id != null){
+    		$query="UPDATE user SET passwd='".$passwd."' WHERE id=".$id;
+    		$success = SQLUpdate($query);
+    		if($success > 0)
+    			$data["success"] = true;
+                $data["status"] = 201;
+                echo json_encode($data, JSON_PRETTY_PRINT);
+    		}
+    		else{
+    		    $data["success"] = false;
+                $data["status"] = 400;
+                echo json_encode($data, JSON_PRETTY_PRINT);
+    		}
+    	}
 	
 	switch($request_method)
 	{
@@ -121,10 +144,14 @@
 			break;
 			
 		case 'DELETE':
-			// Supprimer un produit
 			$id = intval($_GET["id"]);
 			deleteUser($id);
 			break;
+
+		case 'PUT':
+            $id = intval($_GET["id"]);
+            changeMDP($id);
+            break;
 
 	}
 ?>
