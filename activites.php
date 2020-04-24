@@ -55,6 +55,22 @@
             echo json_encode($data, JSON_PRETTY_PRINT);
     }
 
+    // VERSION NICO
+    function getEspaceHistorique($date)
+    {
+            $date = valider("date");
+            $query = "SELECT DISTINCT e.id, e.nomEspace, e.idUser
+                      FROM espace as e
+                      INNER JOIN activite as a
+                      ON e.id = a.idEspace
+                      WHERE a.date LIKE '".$date."'";
+
+        	$data["espacesHistorique"] = parcoursRs(SQLSelect($query));
+            $data["success"] = true;
+            $data["status"] = 201;
+            echo json_encode($data, JSON_PRETTY_PRINT);
+    }
+
 
 	function AddActivite()
 	{
