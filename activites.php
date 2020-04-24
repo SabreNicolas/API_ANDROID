@@ -56,9 +56,9 @@
     }
 
     // VERSION NICO
-    function getEspaceHistorique($date)
+    function getEspaceHistorique($dateHistoric)
     {
-            $date = valider("date");
+            $date = valider("dateHistorique");
             $query = "SELECT DISTINCT e.id, e.nomEspace, e.idUser
                       FROM espace as e
                       INNER JOIN activite as a
@@ -142,6 +142,11 @@
                     getIndicateursAssociatedToEspaceAndDate($idEspace,$date);
                 }
             	else getIndicateursAssociatedToEspace($idEspace);
+            }
+            else if(!empty($_GET["dateHistorique"]))
+            {
+                $dateHistorique=intval($_GET["dateHistorique"]);
+                getEspaceHistorique($dateHistorique);
             }
             else{
                 getActivites();
