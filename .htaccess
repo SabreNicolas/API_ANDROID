@@ -18,7 +18,7 @@ RewriteRule ^activites/?$ activites.php
 RewriteRule ^activites+/(\d+)$ activites.php?id=$1
 RewriteRule ^activites+/(\d+)/indicateurs$ activites.php?idEspace=$1
 RewriteRule ^activites+/(\d+)/(.*)/indicateurs$ activites.php?idEspace=$1&date=$2
-RewriteRule ^activites+/(.*)/historic activites.php?&dateHistorique=$1
+RewriteRule ^activites+/(\d+)/(.*)/historic activites.php?idUser=$1&dateHistorique=$2
 
 RewriteRule ^views/?$ view.php
 RewriteRule ^views+/(\d+)$ view.php?idEspace=$1

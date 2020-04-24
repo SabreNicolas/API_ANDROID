@@ -56,14 +56,14 @@
     }
 
     // VERSION NICO
-    function getEspaceHistorique($dateHistoric)
+    function getEspaceHistorique($dateHistoric,$idUser)
     {
             $date = valider("dateHistorique");
             $query = "SELECT DISTINCT e.id, e.nomEspace, e.idUser
                       FROM espace as e
                       INNER JOIN activite as a
                       ON e.id = a.idEspace
-                      WHERE a.date LIKE '".$date."'";
+                      WHERE e.idUSer =".$idUser." and a.date LIKE '".$date."'";
 
         	$data["espacesHistorique"] = parcoursRs(SQLSelect($query));
             $data["success"] = true;
@@ -146,7 +146,8 @@
             else if(!empty($_GET["dateHistorique"]))
             {
                 $dateHistorique=intval($_GET["dateHistorique"]);
-                getEspaceHistorique($dateHistorique);
+                $idUser=intval($_GET["idUser"]);
+                getEspaceHistorique($dateHistorique,$idUser);
             }
             else{
                 getActivites();
